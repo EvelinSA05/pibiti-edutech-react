@@ -1,5 +1,5 @@
 function Header(props) {
-    const { title1, title2, h1, h2, h3, h4, h5, h6, h7, h8, v1, v2, v3, v4 } = props;
+    const { title1, title2, h1, h2, h3, h4, h5, h6, h7, h8, v1, v2, v3, v4, picture } = props;
     const links = [
         { name: h1, href: '#' },
         { name: h2, href: '#' },
@@ -16,7 +16,7 @@ function Header(props) {
         <div className="relative isolate overflow-hidden bg-gray-900 py-20 sm:py-32">
             <img
                 alt=""
-                src="https://media.istockphoto.com/id/2149838473/id/foto/pertemuan-bisnis-latar-belakang-kabur-dan-orang-orang-di-kantor-untuk-kerja-tim-kolaborasi-dan.jpg?s=612x612&w=0&k=20&c=xkalwrUtViw8Peawc56MK-zRzg9xWcNBAnTHzR9zcvc="
+                src={picture}
                 className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center"
             />
             <div
@@ -45,8 +45,8 @@ function Header(props) {
             </div>
             <div className="mx-auto items-start -mt-20 max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl lg:mx-0">
-                    <h2 className="text-5xl font-semibold tracking-tight text-shadow-red-800 sm:text-7xl">{title1}</h2>
-                    <p className="mt-8 text-lg font-medium text-pretty text-shadow-red-600 sm:text-xl/8">
+                    <h2 className="text-5xl font-semibold tracking-tight !text-red-800 sm:text-7xl">{title1}</h2>
+                    <p className="mt-8 text-lg font-medium text-pretty !text-pink-700 sm:text-xl/8">
                         {title2}
                     </p>
                 </div>

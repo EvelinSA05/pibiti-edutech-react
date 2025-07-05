@@ -1,5 +1,24 @@
+import { useState } from 'react';
+
 function Form(props) {
     const { title, description, f1, f2, f3, b1 } = props;
+
+    const [nama, setNama] = useState('');
+    const [email, setEmail] = useState('');
+    const [saran, setSaran] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (!nama || !email || !saran) {
+            alert('Harap isi semua kolom sebelum mengirim!');
+            return;
+        }
+        alert(`Pesan Terkirim!\nNama: ${nama}\nEmail: ${email}\nSaran: ${saran}`);
+        setNama('');
+        setEmail('');
+        setSaran('');
+    };
+
     return (
         <div className="flex flex-col items-center py-16 px-6">
             <div className="max-w-sm w-full lg:max-w-full lg:flex">
@@ -15,27 +34,49 @@ function Form(props) {
                                 {description}
                             </p>
                         </div>
-                        <form className="w-full max-w-xl mx-auto text-left">
+                        <form className="w-full max-w-xl mx-auto text-left" onSubmit={handleSubmit}>
                             <div className="mb-6">
                                 <label className="block text-gray-200 font-bold mb-2" htmlFor="name">
                                     {f1}
                                 </label>
-                                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="name" type="text" placeholder="Nama Anda" />
+                                <input
+                                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                    id="name"
+                                    type="text"
+                                    placeholder="Nama Anda"
+                                    value={nama}
+                                    onChange={(e) => setNama(e.target.value)}
+                                />
                             </div>
                             <div className="mb-6">
                                 <label className="block text-gray-200 font-bold mb-2" htmlFor="email">
                                     {f2}
                                 </label>
-                                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" type="email" placeholder="Email Anda" />
+                                <input
+                                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                    id="email"
+                                    type="email"
+                                    placeholder="Email Anda"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
                             </div>
                             <div className="mb-6">
                                 <label className="block text-gray-200 font-bold mb-2" htmlFor="suggestion">
                                     {f3}
                                 </label>
-                                <textarea name="suggestion" id="suggestion" rows="4" className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Saran Anda"></textarea>
+                                <textarea
+                                    name="suggestion"
+                                    id="suggestion"
+                                    rows="4"
+                                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                    placeholder="Saran Anda"
+                                    value={saran}
+                                    onChange={(e) => setSaran(e.target.value)}
+                                ></textarea>
                             </div>
                             <div>
-                                <button className="shadow bg-purple-100 hover:bg-purple-100 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                                <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                                     {b1}
                                 </button>
                             </div>
@@ -47,4 +88,4 @@ function Form(props) {
     );
 }
 
-export default Form
+export default Form;
