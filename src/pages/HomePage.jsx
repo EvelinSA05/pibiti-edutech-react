@@ -6,6 +6,8 @@ import axiosInstance from '../api/axiosInstance';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PromoBanner from '../components/ui/PromoBanner';
+import CTASection from '../components/ui/CTASection';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 
 function HomePage({ testimonialData }) {
   const [featuredCourses, setFeaturedCourses] = useState([]);
@@ -45,7 +47,7 @@ function HomePage({ testimonialData }) {
 
       <PromoBanner />
 
-      <div className="py-4 mt-20">
+      <div className="py-4 mt-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="mt-2 pb-5 text-5xl font-extrabold text-red-900 tracking-tight">Paket Unggulan</h2>
@@ -53,10 +55,9 @@ function HomePage({ testimonialData }) {
               Mulai Perjalanan Belajar Anda
             </p>
           </div>
-
           <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
             {isLoading ? (
-              <p>Memuat kursus...</p>
+              <LoadingSpinner/>
             ) : (
               featuredCourses.map((course) => (
                 <Card
@@ -68,7 +69,6 @@ function HomePage({ testimonialData }) {
               ))
             )}
           </div>
-
           <div className="mt-12 text-center">
             <Link
               to="/courses"
@@ -86,13 +86,24 @@ function HomePage({ testimonialData }) {
         next="Berikutnya"
         testimonials={testimonialData}
       />
-      <Download
-        title1="Belajar Di manapun dan Kapanpun"
-        title2="Tetap Update Pembelajaran dan Temukan Study Buddy di IOS dan Android. Download Aplikasinya Hari Ini"
-        desc1="Download di"
-        desc2="Mac App Store"
-        desc3="Dapatkan di"
-        desc4="Google Play" />
+
+      <div className="max-w-7xl -mb-20 -mt-10 px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div className="h-full">
+            <Download
+              title1="Belajar Di manapun dan Kapanpun"
+              title2="Tetap Update Pembelajaran dan Temukan Study Buddy di IOS dan Android. Download Aplikasinya Hari Ini"
+              desc1="Download di"
+              desc2="Mac App Store"
+              desc3="Dapatkan di"
+              desc4="Google Play"
+            />
+          </div>
+          <div className="h-full">
+            <CTASection />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

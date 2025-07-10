@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import FeatureList from '../components/ui/FeatureList';
 import Header from '../components/layout/Header';
 import axiosInstance from '../api/axiosInstance';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 
 function RegistrationPage(props) {
     const { featureTitle, titleHistory, desc1, desc2, harga1, desc3, desc4, harga2, desc5, harga3, titleForm, form1, form2, form3, send } = props;
@@ -55,7 +56,9 @@ function RegistrationPage(props) {
         }
     };
 
-    if (isLoading) return <div className="text-center py-20 text-2xl">Memuat Halaman Pendaftaran...</div>;
+    if (isLoading) {
+        return <LoadingSpinner />;
+    }
     if (error || !course) return <div className="text-center py-20 text-2xl text-red-500">❌ {error || "Kursus tidak ditemukan."}</div>;
 
     return (

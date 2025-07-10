@@ -1,7 +1,7 @@
 function Download(props) {
     const { title1, title2, desc1, desc2, desc3, desc4 } = props;
     return (
-        <div className="w-full mt-8 mb-28 p-4 text-center bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-pink-800 dark:border-gray-700">
+        <div className="w-full mt-0 mb-28 p-4 text-center bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-pink-800 dark:border-gray-700">
             <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">{title1}</h5>
             <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">{title2}</p>
             <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
