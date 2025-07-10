@@ -12,23 +12,19 @@ function MentorsPage() {
     const fetchMentors = async () => {
       try {
         setIsLoading(true);
-        setError(null);
-        const response = await axiosInstance.get('/data');
-        const mentorData = response.data.filter(item => item.category === 'mentor');
-        setMentors(mentorData);
+        const response = await axiosInstance.get('/data?category=mentor');
+        setMentors(response.data);
       } catch (err) {
-        setError("Gagal memuat data mentor. Silakan coba lagi nanti.");
-        console.error("Error fetching mentors:", err);
+        setError("Gagal memuat data mentor.");
       } finally {
         setIsLoading(false);
       }
     };
-
     fetchMentors();
   }, []);
 
   if (isLoading) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
   if (error) {
