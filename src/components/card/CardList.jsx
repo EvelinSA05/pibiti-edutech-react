@@ -47,9 +47,14 @@ function CardList(props) {
                         title={item.title}
                         description={item.description}
                         tag={item.tag}
-                        picture={item.picture}
+                        rating={item.rating}
+                        reviews={item.reviews}
                         harga={item.harga}
+                        originalPrice={item.originalPrice}
+                        discount={item.discount}
+                        picture={item.picture}
                         fitur={item.fitur}
+                        pengalaman={item.pengalaman}
                     />
                 ))}
             </div>

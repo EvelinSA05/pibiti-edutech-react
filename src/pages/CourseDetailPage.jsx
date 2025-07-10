@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axiosInstance from '../api/axiosInstance';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 
 function CourseDetailPage(props) {
     const { back, feature, regist } = props;
@@ -13,7 +14,6 @@ function CourseDetailPage(props) {
         const fetchCourse = async () => {
             try {
                 setIsLoading(true);
-                // Ambil data dari endpoint /courses/:id menggunakan ID dari URL
                 const response = await axiosInstance.get(`/data/${courseId}`);
                 setCourse(response.data);
             } catch (err) {
@@ -28,7 +28,7 @@ function CourseDetailPage(props) {
     }, [courseId]);
 
     if (isLoading) {
-        return <div className="text-center py-20 text-2xl">🔄 Memuat detail...</div>;
+        return <LoadingSpinner />;
     }
 
     if (error || !course) {

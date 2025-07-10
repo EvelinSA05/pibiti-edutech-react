@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import CardList from '../components/card/CardList';
-import LoadingSpinner from '../components/ui/LoadingSpinner'; // <-- 1. Import Spinner
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 import axiosInstance from '../api/axiosInstance';
 
 function CoursesPage() {
